@@ -1,0 +1,36 @@
+BQVH74O1SNWF
+
+PCI\VEN_8086&DEV_0416&SUBSYS_51061558&REV_06
+PCI\VEN_8086&DEV_0416&SUBSYS_51061558
+PCI\VEN_8086&DEV_0416&CC_030000
+PCI\VEN_8086&DEV_0416&CC_0300
+
+
+-          Delete all ATI folders in C:\programs files and C:\programs files (x86)
+-          Go to C:\Windows\assembly and sort by "Public Key Token". Locate the following Public Key Token "90ba9c70f846762e" that is
+-          associated with ATI. Usually only 2 entries. Delete the 2 entries. Note: the entries should be deleted (right click and choose uninstall) in safemode since regular
+-          mode may result in a permissions error. The 2 entries only show up in systems affected by this issue. This means that searching for the 2 entries on systems where CCC loads, the entries are not there.
+-      Shut down and re-start normally.
+-          Reinstall the ATI Catalyst package with driver/ccc bundle from here:
+Sub macro()
+Dim r&, c&, n#, i&
+Dim rg As Range
+  Cells.Interior.ColorIndex = 0
+  r = Cells(Rows.Count, 2).End(xlUp).Row
+  For i = 2 To r
+    For Each rg In Range(Cells(i, "I"), Cells(i, "P"))
+      If rg.Value = "" Then
+        rg.Value = 0
+      End If
+    Next
+    n = Application.WorksheetFunction.Min(Range(Cells(i, "I"), Cells(i, "P")))
+    Set rg = Range(Cells(i, "I"), Cells(i, "P")).Cells.Find(n, , , xlWhole)
+    rg.Interior.ColorIndex = 4
+    Cells(i, "H").Value = Cells(i, "H").Value - rg.Value
+    rg.Value = 0
+    n = 0
+  Next
+Range("A2").CurrentRegion.Select
+  Selection.Sort Key1:=Range("A2"), Order1:=xlAscending, Header:=xlGuess, OrderCustom:=1, MatchCase:=False, Orientation:=xlTopToBottom, DataOption1:=xlSortNormal
+End Sub
+
