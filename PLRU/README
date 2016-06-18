@@ -1,0 +1,5 @@
+P_LRU
+Commands to run the benchmark anagram anagram.alpha:
+~/cs203/sim-wattch-lru/sim-outorder -cache:dl1 dl1:128:32:4:p -cache:il1 il1:128:32:4:p -cache:dl2 ul2:1024:64:4:p -cache:il2 dl2 anagram.alpha words < anagram.in 2>OUT_plru.txt
+-Cache:* *:*:*:*:p select the P_LRU replacement plicy
+all other cache parameters are default.

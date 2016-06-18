@@ -1,0 +1,6 @@
+VICTIM CACHE
+Commands to run the benchmark anagram anagram.alpha:
+./sim-outorder -vc -cache:vcblocks 8 -cache:vclat 1 anagram.alpha words < anagram.in 2>OUT_v.txt
+-vc flag to enable the victim cache
+-cache:vcblocks number of blocks in victim cache----default 8
+-cache:vclat latency of victim cache----default 1

@@ -1,0 +1,6 @@
+STREAM BUFFER
+Commands to run the benchmark anagram anagram.alpha:
+~/cs203/sim-wattch-p/sim-outorder -pf -cache:pfblocks 8 -cache:pflat 1 anagram.alpha words < anagram.in 2>OUT_p.txt
+-pf flag to enable the stream buffer cache
+-cache:pfblocks number of blocks in stream buffer cache----default 8
+-cache:pflat latency of stream buffer cache----default 1
